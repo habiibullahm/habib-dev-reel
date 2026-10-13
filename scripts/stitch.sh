@@ -6,7 +6,11 @@ FRAMES=out/frames/frame_%04d.png
 AUDIO=out/habib-hype.wav
 OUT=out/habib-hype.mp4
 
-[[ -f out/frames/frame_0899.png ]] || { echo "missing frames; run: npm run frames" >&2; exit 1; }
+# ffmpeg's image demuxer stops at the first gap, so the last frame existing is not enough.
+for ((i = 0; i < 900; i++)); do
+  frame=$(printf 'out/frames/frame_%04d.png' "$i")
+  [[ -f "$frame" ]] || { echo "missing $frame; run: npm run frames" >&2; exit 1; }
+done
 [[ -f "$AUDIO" ]] || { echo "missing $AUDIO; run: npm run audio" >&2; exit 1; }
 
 ffmpeg -y -hide_banner -loglevel warning -stats \
