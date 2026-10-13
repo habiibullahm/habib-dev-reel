@@ -1,0 +1,26 @@
+{
+  "name": "habib-hype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "30-second 9:16 hype video for Muhammad Habiibullah, built in HTML/CSS/JS and rendered with headless Chrome + ffmpeg",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-html.mjs",
+    "audio": "node scripts/make-audio.mjs",
+    "review": "node scripts/review.mjs",
+    "frames": "node scripts/render-frames.mjs",
+    "stitch": "bash scripts/stitch.sh",
+    "preview": "node scripts/preview-server.mjs",
+    "video": "npm run build && npm run audio && npm run review && npm run frames && npm run stitch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://origin.cursor.com/git/muhammad-nashrullah/tmp-f395752f89beea25.git"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/plus-jakarta-sans": "^5.3.0",
+    "puppeteer-core": "^23.11.1"
+  }
+}

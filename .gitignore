@@ -1,0 +1,6 @@
+node_modules/
+out/frames/
+out/review/
+out/*.wav
+out/*.log
+.DS_Store
