@@ -22,7 +22,8 @@ export async function launch() {
 export async function openStage(browser) {
   const page = await browser.newPage();
   await page.setViewport({ width: WIDTH, height: HEIGHT, deviceScaleFactor: 1 });
-  const url = `${pathToFileURL(path.join(root, 'hype.html')).href}?render=1`;
+  const version = process.env.HYPE_V === 'pro' ? 'pro' : process.env.HYPE_V === 'beginner' ? 'beginner' : '';
+  const url = `${pathToFileURL(path.join(root, 'hype.html')).href}?render=1${version ? `&v=${version}` : ''}`;
   await page.goto(url, { waitUntil: 'load' });
   await page.evaluate(async () => {
     await window.hypeReady;

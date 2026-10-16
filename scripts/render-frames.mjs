@@ -6,7 +6,7 @@ import { launch, openStage, shoot, root } from './lib/browser.mjs';
 const FPS = 30;
 const FRAMES = 900;
 const WORKERS = Math.max(1, Math.min(Number(process.env.WORKERS) || os.cpus().length, 6));
-const outDir = path.join(root, 'out/frames');
+const outDir = path.join(root, process.env.FRAMES_DIR || 'out/frames');
 
 await rm(outDir, { recursive: true, force: true });
 await mkdir(outDir, { recursive: true });

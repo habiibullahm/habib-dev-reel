@@ -138,9 +138,18 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
 .check i { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 193, 7, 0.14); border: 1.5px solid var(--y); }
 .check svg { width: 18px; height: 18px; stroke-width: 2.6; }
 .footer { position: absolute; left: 48px; right: 48px; bottom: 64px; text-align: center; font-family: var(--mono); font-size: 20px; line-height: 1.3; color: var(--muted); }
+
+#ver-switch { position: fixed; top: 14px; right: 14px; z-index: 50; display: flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(17, 20, 27, 0.9); border: 1px solid var(--edge); backdrop-filter: blur(8px); font-family: var(--sans); }
+body.render #ver-switch { display: none !important; }
+#ver-switch button { cursor: pointer; border: 0; border-radius: 999px; padding: 7px 14px; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--soft); background: transparent; }
+#ver-switch button.active { background: var(--y); color: var(--bg); }
 </style>
 </head>
 <body>
+<div id="ver-switch" aria-label="Pilih versi konten">
+  <button type="button" data-ver="beginner">1 · Beginner (User-Friendly)</button>
+  <button type="button" data-ver="pro">2 · Professional (LinkedIn)</button>
+</div>
 <div id="stage">
   <div id="grid"></div>
   <div id="glow"></div>
@@ -154,7 +163,7 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
       <div class="term-bar"><i></i><i></i><i></i></div>
       <div class="term-line"><span class="type" data-type="0.35 0.075 -0.35">&gt; build --ai</span></div>
     </div>
-    <h1 class="hook" data-stagger="up 1.45 0.42 0.08"><span class="w">Cari</span> <span class="w">engineer</span> <span class="w">yang</span> <span class="w">bisa</span> <span class="w">bangun</span> <span class="w">aplikasi</span> <span class="w">dan</span> <span class="w y">AI</span> <span class="w">sampai</span> <span class="w"><span class="y">production</span>?</span></h1>
+    <h1 class="hook" data-stagger="up 1.45 0.42 0.08"><span class="w">Mau</span> <span class="w">bikin</span> <span class="w y">web,</span> <span class="w">aplikasi,</span> <span class="w">atau</span> <span class="w y">AI</span> <span class="w">buat</span> <span class="w">bisnismu?</span></h1>
   </section>
 
   <section class="scene" id="s2">
@@ -164,7 +173,7 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
     </div>
     <p class="hello" data-a="up 0.4 0.4">Halo, saya</p>
     <h1 class="name y" data-a="up 0.52 0.45">Muhammad Habiibullah</h1>
-    <p class="role"><span class="type" data-type="1.0 0.042 0">AI &amp; Full-Stack Engineer · Jakarta</span></p>
+    <p class="role"><span class="type" data-type="1.0 0.036 0">2+ Tahun Web, Mobile &amp; AI · Jakarta</span></p>
   </section>
 
   <section class="scene" id="s3">
@@ -172,19 +181,19 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
     <div class="cards" data-stagger="left 0.3 0.45 0.08">
       <div class="card">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M7 13.5h5M7 16.5h8"/></svg></div>
-        <div><h3>Product</h3><div class="chips" data-stagger="pop 0.55 0.35 0.08"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">PWA</span></div></div>
+        <div><h3>Web &amp; Portal B2B</h3><div class="chips" data-stagger="pop 0.55 0.35 0.08"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span></div></div>
       </div>
       <div class="card">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z"/><path d="M18.5 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></div>
-        <div><h3>Applied AI</h3><div class="chips" data-stagger="pop 0.63 0.35 0.08"><span class="chip">RAG</span><span class="chip">LLM</span><span class="chip">assistants</span></div></div>
+        <div><h3>Chatbot &amp; AI</h3><div class="chips" data-stagger="pop 0.63 0.35 0.08"><span class="chip">RAG</span><span class="chip">OpenAI</span><span class="chip">Rekomendasi</span></div></div>
       </div>
       <div class="card">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div>
-        <div><h3>Backend</h3><div class="chips" data-stagger="pop 0.71 0.35 0.08"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">REST</span></div></div>
+        <div><h3>Backend &amp; API</h3><div class="chips" data-stagger="pop 0.71 0.35 0.08"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Node.js</span></div></div>
       </div>
       <div class="card">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg></div>
-        <div><h3>Data</h3><div class="chips" data-stagger="pop 0.79 0.35 0.08"><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Docker</span></div></div>
+        <div><h3>Mobile &amp; Data</h3><div class="chips" data-stagger="pop 0.79 0.35 0.08"><span class="chip">React Native</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span></div></div>
       </div>
     </div>
   </section>
@@ -193,24 +202,24 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
     <h2 class="title y" data-a="zoom 0 0.45">End-to-end.</h2>
     <div class="grid2" data-stagger="pop 0.3 0.45 0.08">
       <div class="tile">
-        <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div>
-        <h3>Backend</h3>
-        <ul data-stagger="up 0.6 0.3 0.08"><li>API</li><li>Service</li><li>Database</li></ul>
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Web App</h3>
+        <ul data-stagger="up 0.6 0.3 0.08"><li>Dashboard</li><li>Portal B2B</li><li>Landing Page</li></ul>
       </div>
       <div class="tile">
-        <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>Web</h3>
-        <ul data-stagger="up 0.68 0.3 0.08"><li>Dashboard</li><li>SaaS</li></ul>
+        <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg></div>
+        <h3>Backend</h3>
+        <ul data-stagger="up 0.68 0.3 0.08"><li>REST API</li><li>Login JWT</li><li>Database</li></ul>
       </div>
       <div class="tile">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
         <h3>Mobile</h3>
-        <ul data-stagger="up 0.76 0.3 0.08"><li>React Native</li></ul>
+        <ul data-stagger="up 0.76 0.3 0.08"><li>React Native</li><li>Android &amp; iOS</li><li>Maps / Survey</li></ul>
       </div>
       <div class="tile">
         <div class="ico"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></svg></div>
-        <h3>Delivery</h3>
-        <ul data-stagger="up 0.84 0.3 0.08"><li>Docker</li><li>CI/CD</li><li>VPS</li></ul>
+        <h3>Terima Beres</h3>
+        <ul data-stagger="up 0.84 0.3 0.08"><li>Docker</li><li>Deploy VPS</li><li>Siap Pakai</li></ul>
       </div>
     </div>
   </section>
@@ -218,18 +227,21 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
   <section class="scene" id="s5">
     <h2 class="title" data-a="up 0 0.4">Tech stack</h2>
     <p class="sub" data-a="up 0.12 0.4">Yang saya pakai sehari-hari</p>
-    <div class="pills" data-stagger="up 0.4 0.4 0.08">
-      <span class="pill" data-flip="2.0 0.5">TypeScript</span>
+    <div class="pills" data-stagger="up 0.4 0.4 0.06">
+      <span class="pill" data-flip="1.7 0.45">Claude Code</span>
+      <span class="pill" data-flip="1.82 0.45">Cursor</span>
+      <span class="pill" data-flip="1.94 0.45">OpenAI</span>
+      <span class="pill">TypeScript</span>
       <span class="pill">React</span>
+      <span class="pill">React Native</span>
       <span class="pill">Node.js</span>
       <span class="pill">Java</span>
-      <span class="pill" data-flip="2.12 0.5">Spring Boot</span>
+      <span class="pill" data-flip="2.06 0.45">Spring Boot</span>
+      <span class="pill">Tailwind</span>
       <span class="pill">PostgreSQL</span>
       <span class="pill">Prisma</span>
-      <span class="pill">Redis</span>
       <span class="pill">Docker</span>
-      <span class="pill" data-flip="2.24 0.5">RAG</span>
-      <span class="pill" data-flip="2.36 0.5">LLMs</span>
+      <span class="pill" data-flip="2.18 0.45">RAG</span>
     </div>
   </section>
 
@@ -237,24 +249,24 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
     <p class="label" data-a="left 0 0.4">Fokus sekarang</p>
     <h2 class="title" data-stagger="up 0.12 0.42 0.08"><span class="w y">AI</span> <span class="w">&amp;</span> <span class="w">Full-Stack</span> <span class="w">Engineering</span></h2>
     <div class="projects" data-stagger="left 0.75 0.42 0.08">
-      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Bidakara AI Assistant</div>
-      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>AGRES AI Sales Assistant</div>
-      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>PodMark</div>
-      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>CV Screener</div>
-      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Nibie</div>
+      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Bidakara · AI CS sumber resmi</div>
+      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>AGRES · AI sales &amp; rekomendasi</div>
+      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Nibie · AI workspace &amp; tools</div>
+      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>CV Screener · Otomasi ranking CV</div>
+      <div class="proj"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Pipedream · Kontributor OSS #20969</div>
     </div>
     <p class="link" data-a="fade 1.35 0.4">habiibullahm.my.id/projects</p>
   </section>
 
   <section class="scene" id="s7">
     <div class="avatar" data-a="pop 0 0.6"><img src="./habib-profile.webp" alt="Muhammad Habiibullah"></div>
-    <span class="pill status" data-a="up 0.35 0.4" data-flip="1.7 0.5">Open to AI &amp; full-stack roles</span>
-    <h2 class="cta" data-stagger="up 0.55 0.42 0.08"><span class="w">Butuh</span> <span class="w">engineer</span> <span class="w">untuk</span> <span class="w">produkmu?</span> <span class="w y">Yuk!</span></h2>
+    <span class="pill status" data-a="up 0.35 0.4" data-flip="1.7 0.5">Open for freelance &amp; projects</span>
+    <h2 class="cta" data-stagger="up 0.55 0.42 0.08"><span class="w">Mau</span> <span class="w">diskusi</span> <span class="w">ide</span> <span class="w">dulu?</span> <span class="w y">Yuk!</span></h2>
     <div class="btn" data-a="pop 1.15 0.5">habiibullahm.my.id<svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></div>
     <div class="checks" data-stagger="up 1.45 0.4 0.08">
-      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.6 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Lihat projects</div>
-      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.68 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>LinkedIn</div>
-      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.76 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>GitHub</div>
+      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.6 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>DM / Komen</div>
+      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.68 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Lihat Portfolio</div>
+      <div class="check"><i><svg class="i" viewBox="0 0 24 24"><path pathLength="1" data-draw="1.76 0.35" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>LinkedIn</div>
     </div>
     <p class="footer" data-a="fade 1.9 0.5">github.com/habiibullahm</p>
   </section>
@@ -284,6 +296,137 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
   };
 
   const stage = document.getElementById('stage');
+  const params = new URLSearchParams(location.search);
+  const renderMode = params.has('render');
+  const freezeAt = params.has('t') ? parseFloat(params.get('t')) : null;
+  const ver = params.get('v') === 'pro' ? 'pro' : 'beginner';
+
+  const arrowSvg = '<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  if (ver === 'pro') {
+    document.querySelector('#s1 .type').textContent = '> hire --engineer';
+    document.querySelector('#s1 .hook').innerHTML =
+      '<span class="w">Cari</span> <span class="w y">engineer</span> <span class="w">yang</span> <span class="w">bisa</span> <span class="w">bangun</span> <span class="w">dari</span> <span class="w">nol</span> <span class="w">sampai</span> <span class="w y">production?</span>';
+    document.querySelector('#s2 .role .type').textContent = 'Full-Stack & AI Engineer · 2+ Tahun';
+    document.querySelector('#s3 .title').innerHTML = '2+ tahun <span class="y">production.</span>';
+    const s3Cards = [
+      ['Enterprise & B2B', ['React', 'TypeScript', 'Tailwind']],
+      ['Applied AI', ['RAG', 'OpenAI', 'Tool Calling']],
+      ['Secure Backend', ['Java', 'Spring Boot', 'JWT/RBAC']],
+      ['Mobile & Data', ['React Native', 'PostgreSQL', 'Redis']],
+    ];
+    document.querySelectorAll('#s3 .card').forEach((card, i) => {
+      card.querySelector('h3').textContent = s3Cards[i][0];
+      card.querySelector('.chips').innerHTML = s3Cards[i][1].map((c) => `<span class="chip">${c}</span>`).join('');
+    });
+    document.querySelector('#s4 .title').textContent = 'Ship end-to-end.';
+    const s4Tiles = [
+      ['Backend', ['Spring Boot', 'REST & JWT', 'PostgreSQL']],
+      ['Web', ['Dashboard', 'Portal B2B', 'SaaS']],
+      ['Mobile', ['React Native', 'Android & iOS', 'Field Survey']],
+      ['Delivery', ['Docker & CI', 'JUnit & Test', 'VPS Deploy']],
+    ];
+    document.querySelectorAll('#s4 .tile').forEach((tile, i) => {
+      tile.querySelector('h3').textContent = s4Tiles[i][0];
+      tile.querySelector('ul').innerHTML = s4Tiles[i][1].map((li) => `<li>${li}</li>`).join('');
+    });
+    document.querySelector('#s5 .title').textContent = 'Tech stack';
+    document.querySelector('#s5 .sub').textContent = 'Tools yang saya pakai sehari-hari';
+    document.querySelector('#s6 .label').textContent = 'Fokus sekarang';
+    document.querySelector('#s6 .title').innerHTML = '<span class="w y">AI-Assisted</span> <span class="w">Engineering</span>';
+    const projs = [
+      'Nibie · AI workspace & tool calls',
+      'Pipedream · Merged OSS PR #20969',
+      'Bidakara · Grounded RAG assistant',
+      'AGRES · AI sales & product recs',
+      'CV Screener · Candidate ranking',
+    ];
+    document.querySelectorAll('#s6 .proj').forEach((row, i) => {
+      row.innerHTML = `${arrowSvg}${projs[i]}`;
+    });
+    document.querySelector('#s7 .pill.status').textContent = '#OpenToFreelance · Full-Stack & AI';
+    document.querySelector('#s7 .cta').innerHTML =
+      '<span class="w">Butuh</span> <span class="w">engineer</span> <span class="w">untuk</span> <span class="w">proyekmu?</span> <span class="w y">Yuk!</span>';
+    const checks = ['Portfolio', 'LinkedIn', 'GitHub'];
+    document.querySelectorAll('#s7 .check').forEach((chk, i) => {
+      const icon = chk.querySelector('i').outerHTML;
+      chk.innerHTML = `${icon}${checks[i]}`;
+    });
+  } else {
+    document.querySelector('#s1 .type').textContent = '> bantu --bisnis';
+    document.querySelector('#s1 .hook').innerHTML =
+      '<span class="w">Mau</span> <span class="w">bikin</span> <span class="w y">web,</span> <span class="w y">aplikasi,</span> <span class="w">atau</span> <span class="w y">AI</span> <span class="w">sampai</span> <span class="w">siap</span> <span class="w">pakai?</span>';
+    document.querySelector('#s2 .role .type').textContent = '2+ Tahun Bikin Web, Aplikasi & AI';
+    document.querySelector('#s3 .title').innerHTML = 'Yang biasa saya <span class="y">buatkan</span>';
+    const s3Cards = [
+      ['Website Bisnis', ['Company Profile', 'Landing Page', 'Web App']],
+      ['Chatbot & AI', ['Balas Chat 24 Jam', 'Rekomendasi', 'CS AI']],
+      ['Dashboard Admin', ['Kelola Data', 'Laporan', 'Portal B2B']],
+      ['Aplikasi HP', ['Android & iOS', 'Peta Lokasi', 'Survey']],
+    ];
+    document.querySelectorAll('#s3 .card').forEach((card, i) => {
+      card.querySelector('h3').textContent = s3Cards[i][0];
+      card.querySelector('.chips').innerHTML = s3Cards[i][1].map((c) => `<span class="chip">${c}</span>`).join('');
+    });
+    document.querySelector('#s4 .title').textContent = 'Terima beres.';
+    const s4Tiles = [
+      ['Tampilan Web', ['Rapi di HP', 'Cepat Diakses', 'Desain Modern']],
+      ['Sistem & Data', ['Login Aman', 'Data Tersimpan', 'Multi-User']],
+      ['Aplikasi HP', ['Android & iOS', 'GPS & Peta', 'Siap Pakai']],
+      ['Sampai Online', ['Setting Server', 'Domain & SSL', 'Dibantu Rawat']],
+    ];
+    document.querySelectorAll('#s4 .tile').forEach((tile, i) => {
+      tile.querySelector('h3').textContent = s4Tiles[i][0];
+      tile.querySelector('ul').innerHTML = s4Tiles[i][1].map((li) => `<li>${li}</li>`).join('');
+    });
+    document.querySelector('#s5 .title').textContent = 'Tools modern';
+    document.querySelector('#s5 .sub').textContent = 'Kerja lebih cepat, hasil lebih rapi';
+    const s5Pills = [
+      ['Claude AI', '1.7 0.45'],
+      ['Cursor', '1.82 0.45'],
+      ['OpenAI', '1.94 0.45'],
+      ['Website Modern', ''],
+      ['React', ''],
+      ['Aplikasi HP', '2.06 0.45'],
+      ['Sistem Backend', ''],
+      ['Database Aman', ''],
+      ['Cloud Server', ''],
+      ['Chatbot AI', '2.18 0.45'],
+      ['Otomasi Kerja', ''],
+    ];
+    document.querySelector('#s5 .pills').innerHTML = s5Pills
+      .map(([label, flip]) => `<span class="pill"${flip ? ` data-flip="${flip}"` : ''}>${label}</span>`)
+      .join('');
+    document.querySelector('#s6 .label').textContent = 'Contoh karya nyata';
+    document.querySelector('#s6 .title').innerHTML = '<span class="w y">Solusi</span> <span class="w">yang</span> <span class="w">sudah</span> <span class="w">jalan</span>';
+    const projs = [
+      'Bidakara · Chatbot CS informasi resmi',
+      'AGRES · AI bantu pilih produk',
+      'Portal B2B · Sistem admin perusahaan',
+      'CV Screener · Web sortir CV otomatis',
+      'Nibie · Aplikasi asisten AI pribadi',
+    ];
+    document.querySelectorAll('#s6 .proj').forEach((row, i) => {
+      row.innerHTML = `${arrowSvg}${projs[i]}`;
+    });
+    document.querySelector('#s7 .pill.status').textContent = '#OpenToFreelance · Terima Project';
+    document.querySelector('#s7 .cta').innerHTML =
+      '<span class="w">Mau</span> <span class="w">diskusi</span> <span class="w">ide</span> <span class="w">dulu?</span> <span class="w y">Yuk!</span>';
+    const checks = ['DM / Komen', 'Lihat Portfolio', 'Konsultasi'];
+    document.querySelectorAll('#s7 .check').forEach((chk, i) => {
+      const icon = chk.querySelector('i').outerHTML;
+      chk.innerHTML = `${icon}${checks[i]}`;
+    });
+  }
+
+  document.querySelectorAll('#ver-switch button').forEach((btn) => {
+    btn.classList.toggle('active', btn.dataset.ver === ver);
+    btn.addEventListener('click', () => {
+      const u = new URL(location.href);
+      u.searchParams.set('v', btn.dataset.ver);
+      location.href = u.toString();
+    });
+  });
+
   const scenes = [...document.querySelectorAll('.scene')].map((el, i) => ({
     el, start: STARTS[i], dur: DURATIONS[i], anims: [], types: [], flips: [], draws: [],
   }));
@@ -416,10 +559,6 @@ svg.i { fill: none; stroke: var(--y); stroke-width: 1.8; stroke-linecap: round; 
     current = t;
     return t;
   }
-
-  const params = new URLSearchParams(location.search);
-  const renderMode = params.has('render');
-  const freezeAt = params.has('t') ? parseFloat(params.get('t')) : null;
 
   const fontLoads = ['500', '700', '800'].map((w) => document.fonts.load(`${w} 40px "Plus Jakarta Sans"`))
     .concat(['500', '700'].map((w) => document.fonts.load(`${w} 40px "JetBrains Mono"`)));
